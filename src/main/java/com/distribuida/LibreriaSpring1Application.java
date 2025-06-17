@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LibreriaSrping1Application {
+public class LibreriaSpring1Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LibreriaSrping1Application.class, args);
+		SpringApplication.run(LibreriaSpring1Application.class, args);
 	}
 
 }
