@@ -1,6 +1,4 @@
 package com.distribuida.dao;
-
-
 import com.distribuida.model.Categoria;
 import com.distribuida.model.Factura;
 import com.distribuida.model.FacturaDetalle;
@@ -16,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Transactional

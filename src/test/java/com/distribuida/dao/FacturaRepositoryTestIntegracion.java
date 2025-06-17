@@ -1,5 +1,4 @@
 package com.distribuida.dao;
-
 import com.distribuida.model.Cliente;
 import com.distribuida.model.Factura;
 import org.junit.jupiter.api.Test;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Transactional
@@ -84,7 +82,5 @@ public class FacturaRepositoryTestIntegracion {
             facturaRepository.deleteById(86);
         }
         assertFalse(facturaRepository.existsById(86));
-
     }
-
 }

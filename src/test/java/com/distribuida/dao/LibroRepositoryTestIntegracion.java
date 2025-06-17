@@ -1,5 +1,4 @@
 package com.distribuida.dao;
-
 import com.distribuida.model.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +12,10 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Transactional
 @Rollback(value = false)
-
 public class LibroRepositoryTestIntegracion {
     @Autowired
     private LibroRepository libroRepository;
