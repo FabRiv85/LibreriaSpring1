@@ -37,7 +37,7 @@ public class LibroController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Libro>update(@PathVariable int id, @RequestBody Libro libro){
-        Libro libro2= libroService.save(libro);
+        Libro libro2= libroService.update(id, libro);
         if (libro2 == null){
             return ResponseEntity.notFound().build();
         }

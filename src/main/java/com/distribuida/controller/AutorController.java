@@ -37,7 +37,7 @@ public class AutorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Autor>update(@PathVariable int id, @RequestBody Autor autor){
-        Autor autor3= autorService.save(autor);
+        Autor autor3= autorService.update(id, autor);
         if (autor3 == null){
             return ResponseEntity.notFound().build();
         }

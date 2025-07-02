@@ -38,7 +38,7 @@ public class FacturaDetalleController {
 
     @PutMapping("/{id}")
     public ResponseEntity<FacturaDetalle>update(@PathVariable int id, @RequestBody FacturaDetalle facturaDetalle){
-        FacturaDetalle facturaDetalle3= facturaDetalleService.save(facturaDetalle);
+        FacturaDetalle facturaDetalle3= facturaDetalleService.update(id, facturaDetalle);
         if (facturaDetalle3 == null){
             return ResponseEntity.notFound().build();
         }
