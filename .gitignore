@@ -1,9 +1,14 @@
+#Ignorar archivos comunes del sistema
+.DS_Store
+Thums.db
 HELP.md
-.gradle
+.gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
+logs/
+*.log
 
 ### STS ###
 .apt_generated
@@ -18,7 +23,7 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -35,3 +40,18 @@ out/
 
 ### VS Code ###
 .vscode/
+###Ignorar dependencias y builds de angular
+libro-app/node_modules/
+libro-app/dist/
+libro-app/ .angular/
+libro-app/ .vscode/
+### Ignorar archivos temoporales y de entorno
+*.env
+*.local
+*.bak
+*.swp
+*.tmp
+###Otros IDEs o herramientas(si se usa)
+*.classpath
+*.project
+*.settings/
