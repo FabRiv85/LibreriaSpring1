@@ -1,7 +1,6 @@
 package com.distribuida.controller;
 
 import com.distribuida.model.Autor;
-import com.distribuida.model.Categoria;
 import com.distribuida.service.AutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +13,7 @@ import java.util.List;
 public class AutorController {
     @Autowired
     private AutorService autorService;
+
     @GetMapping
     public ResponseEntity<List<Autor>> findAll(){
         List<Autor> autor1 = autorService.findAll();
@@ -22,26 +22,26 @@ public class AutorController {
 
     @GetMapping("/{id}")
     public  ResponseEntity<Autor> findOne(@PathVariable int id){
-        Autor autor1= autorService.findOne(id);
-        if (autor1 == null){
+        Autor autor= autorService.findOne(id);
+        if (autor == null){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(autor1);
+        return ResponseEntity.ok(autor);
     }
 
     @PostMapping
     public ResponseEntity<Autor> save (@RequestBody Autor autor){
-        Autor autor2 = autorService.save(autor);
-        return ResponseEntity.ok(autor2);
+        Autor autor1 = autorService.save(autor);
+        return ResponseEntity.ok(autor1);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Autor>update(@PathVariable int id, @RequestBody Autor autor){
-        Autor autor3= autorService.update(id, autor);
-        if (autor3 == null){
+        Autor autor1= autorService.update(id, autor);
+        if (autor1 == null){
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(autor3);
+        return ResponseEntity.ok(autor1);
     }
 
     @DeleteMapping("/{id}")

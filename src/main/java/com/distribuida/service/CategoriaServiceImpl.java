@@ -40,7 +40,7 @@ public class CategoriaServiceImpl implements CategoriaService{
 
         categoriaExistente.setCategoria(categoria.getcategoria());
         categoriaExistente.setDescripcion(categoria.getDescripcion());
-        return null;
+        return categoriaRepository.save(categoriaExistente);
     }
 
     @Override

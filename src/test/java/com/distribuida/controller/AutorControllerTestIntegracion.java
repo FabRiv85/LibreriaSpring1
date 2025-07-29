@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SuppressWarnings("removal")
 @WebMvcTest(AutorController.class)
-public class AutorControllerTestIntegracion {
+public class    AutorControllerTestIntegracion {
     @Autowired
     private MockMvc mockMvc;
 

@@ -42,7 +42,7 @@ public class AutorServiceImpl implements AutorService{
         autorExistente.setDirAutor(autor.getDirAutor());
         autorExistente.setFonoAutor(autor.getFonoAutor());
         autorExistente.setCorreoAutor(autor.getCorreoAutor());
-        return null;
+        return autorRepository.save(autorExistente);
     }
 
     @Override
