@@ -1,5 +1,5 @@
-//import { Autor } from "../services/autor"
-//import { Categoria } from "./categoria.model"
+import { Autor } from "./autor.model"
+import { Categoria } from "./categoria.model"
 
 export interface Libro{
     idLibro: number
@@ -16,8 +16,8 @@ export interface Libro{
     portLibro:string
     preseLibro: string
     precLibro: number
-    //categoria: Categoria
-    //autor: Autor
+    categoria: Categoria
+    autor: Autor
 
     [key: string]: any;
 }
