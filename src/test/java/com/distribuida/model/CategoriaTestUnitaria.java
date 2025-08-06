@@ -1,7 +1,5 @@
 package com.distribuida.model;
 
-//import com.distribuida.entities.Autor;
-//import com.distribuida.entities.Categoria;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

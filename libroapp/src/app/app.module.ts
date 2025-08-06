@@ -51,8 +51,7 @@ import { CategoriaComponent } from './components/categoria/categoria';
     MatNativeDateModule
   ],
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    MatDatepickerModule
+    provideBrowserGlobalErrorListeners()
   ],
   bootstrap: [App]
 })

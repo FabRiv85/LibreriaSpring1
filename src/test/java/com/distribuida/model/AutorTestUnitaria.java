@@ -1,7 +1,4 @@
 package com.distribuida.model;
-
-//import com.distribuida.entities.Autor;
-//import com.distribuida.entities.Cliente;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -37,7 +34,7 @@ public class AutorTestUnitaria {
         autor.setFonoAutor("099593825");
         autor.setCorreoAutor("manuel.taipe@taipe.com");
 
-        assertAll("Validar datos de cliente",
+        assertAll("Validar datos de autor",
                 () -> assertEquals(2, autor.getIdAutor()),
                 () -> assertEquals("Manuel", autor.getNomAutor()),
                 () -> assertEquals("Beltran", autor.getApeAutor()),

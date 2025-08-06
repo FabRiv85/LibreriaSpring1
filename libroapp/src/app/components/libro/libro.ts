@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { Libro } from '../../model/libro.model';
 import { Autor } from '../../model/autor.model';
+import { Categoria } from '../../model/categoria.model';  
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -11,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Block } from '@angular/compiler';
 import { NgForm } from '@angular/forms';
+import { CategoriaService } from '../../services/categoria';
+
 
 @Component({
   selector: 'app-libro',
@@ -22,25 +25,27 @@ export class LibroComponent implements OnInit{
 
   libros: Libro[]= [];
   autores: Autor[]=[];
-  //categorias: Categoria[]=[];
+  categorias: Categoria[]=[];
   libro: Libro= { } as Libro;
   editar:boolean = false;
   idEditar: number | null = null;
   dataSource!: MatTableDataSource<Libro>;
   selectedFile!: File;
   imagenPreview: string = "";
+  libroSeleccionado: Libro | null= null;
 
-  mostrarColumnas: String[]= ['idLibro','titulo','editorial','edicion','idioma','fechaPublicacion','numEjemplares','precio','autor','categoria','acciones'];
+  mostrarColumnas: String[]= ['detalles','idLibro','titulo','editorial','edicion','idioma','fechaPublicacion','numEjemplares','precio','autor','categoria','acciones'];
 
 @ViewChild('formularioLibro') formularioLibro!: ElementRef;
 @ViewChild(MatPaginator) paginator !: MatPaginator;
 @ViewChild(MatSort) sort!: MatSort;
-@ViewChild('modaLibro') modaLibro!: TemplateRef<any>;
-  //paginator: MatPaginator | null;
+@ViewChild('modalLibro') modalLibro!: TemplateRef<any>;
+@ViewChild('modalDetalles') modalDetalles!: TemplateRef<any>;
 
 constructor(
   private libroService: LibroService,
   private autorService: AutorService,
+  private categoriaService: CategoriaService,
   private dialog: MatDialog,
   private http:HttpClient
 ){}
@@ -49,13 +54,13 @@ constructor(
   ngOnInit(): void {
     this.findAll();
     this.cargarAutores();
-    //this.cargarCategorias();
+    this.cargarCategorias();
   }
 
   findAll(): void{
     this.libroService.findAll().subscribe(data=>{
       this.dataSource= new MatTableDataSource(data);
-      this.dataSource.paginator= this.paginator;
+      this.dataSource.paginator=this.paginator;
       this.dataSource.sort=this.sort;
     });
   }
@@ -67,11 +72,11 @@ constructor(
     });
   }
 
-//  cargarCategorias(): void{
- //   this.categoriaService.findAll().subscribe(data=> {
- //     this.categorias = data;
- //   });
- // }
+  cargarCategorias(): void{
+    this.categoriaService.findAll().subscribe(data=> {
+      this.categorias = data;
+    });
+  }
 
   save(): void{
     this.libroService.save(this.libro).subscribe(()=>{
@@ -99,6 +104,7 @@ constructor(
       showCancelButton: true,
       confirmButtonText: 'Si, eliminar',
       confirmButtonColor: '#d33',
+      cancelButtonText:'Cancelar',
       cancelButtonColor:'#3085d6'
     }).then((result)=> {
       if(result.isConfirmed){
@@ -120,7 +126,7 @@ constructor(
       this.editar=true;
       setTimeout(()=>{
         this.formularioLibro.nativeElement.scrollIntoView({behavior: 'smooth',block:'start'})
-      },100)
+      },100);
     }
 
     editarLibroCancelar(form: NgForm): void{
@@ -146,7 +152,7 @@ constructor(
     }
 
     nombreCompletoAutor(autor: Autor): string{
-      return `${autor.nomAutor} ${autor.apeAutor}`
+      return `${autor.nomAutor} ${autor.apeAutor}`;
     }
 
     abrirModal(libro?: Libro): void{
@@ -160,7 +166,7 @@ constructor(
         this.idEditar=null;
       }
 
-      this.dialog.open(this.modaLibro,{
+      this.dialog.open(this.modalLibro,{
         width: '800px',
         disableClose: true
       });   
@@ -170,9 +176,9 @@ constructor(
       return a1 && a2 ? a1.idAutor === a2.idAutor : a1===a2;
     }
 
-//    compararCategorias(c1: Categoria, c2: Categoria): boolean{
-//      return c1 && c2 ? c1.idCategoria==c2.idCategoria : c1== c2;
-//    }
+    compararCategorias(c1: Categoria, c2: Categoria): boolean{
+      return c1 && c2 ? c1.idCategoria==c2.idCategoria : c1== c2;
+    }
 
     seleccionarArchivo(event: any){
       this.selectedFile = event.target.files[0];
@@ -180,17 +186,28 @@ constructor(
 
     subirImagen():void{
       const formData = new FormData();
-      formData.append("files",this.selectedFile);
+      formData.append("file",this.selectedFile);
 
       if(this.libro.portLibro){
         formData.append("oldImage", this.libro.portLibro);
       }
 
-      this.http.post<{ruta: string}>('htto://localhost:8080/api/upload-portada', formData)
-      .subscribe(()=>{
-//        this.libro.portLibro=res.ruta; //Descarcar para usar
-//        this.imagenPreview= res.ruta; //Descarcar para usar
+      this.http.post<{ruta: string}>('http://localhost:8080/api/upload-portada', formData)
+      .subscribe(res=>{
+        this.libro.portLibro=res.ruta; 
+        this.imagenPreview= res.ruta; 
       });
     }
-}
 
+    abrirModalDetalles(libro : Libro): void{
+      this.libroSeleccionado= libro; 
+      this.dialog.open(this.modalDetalles,{
+        width: '500px'
+      });   
+    }
+    
+    cerrarModal(): void{
+      this.dialog.closeAll();
+      this.libroSeleccionado= null;
+    }
+}

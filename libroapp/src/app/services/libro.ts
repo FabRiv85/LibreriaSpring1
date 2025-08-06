@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LibroService implements OnInit{
+export class LibroService {
 
   private baseURL= "http://localhost:8080/api/libros";
   
@@ -32,7 +32,4 @@ export class LibroService implements OnInit{
     return this.http.delete<void>(`${this.baseURL}/${id}`);
   }
 
-     ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 }
