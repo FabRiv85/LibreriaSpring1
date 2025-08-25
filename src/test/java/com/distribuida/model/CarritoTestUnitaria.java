@@ -26,6 +26,7 @@ public class CarritoTestUnitaria {
         );
     }
 
+    @Test
     public void testCarritoSetters(){
         carrito = new Carrito();
         carrito.setIdCarrito(3L);

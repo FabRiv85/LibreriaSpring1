@@ -36,14 +36,14 @@ public class CarritoItemRepositoryTestIntegracion {
 
     @Test
     public void  findOne(){
-        Optional<CarritoItem> carritoItems= carritoItemRepository.findById(1);
+        Optional<CarritoItem> carritoItems= carritoItemRepository.findById(1L);
         assertTrue(carritoItems.isPresent());
         System.out.println(carritoItems.toString());
     }
 
     @Test
     public void save(){
-        CarritoItem carritoItem = new CarritoItem(0, 2, 12.80, 25.60);
+        CarritoItem carritoItem = new CarritoItem();
         CarritoItem carritoItemGuardado= carritoItemRepository.save(carritoItem);
         assertNotNull(carritoItemGuardado);
         assertEquals(2, carritoItemGuardado.getCantidad());
@@ -53,7 +53,7 @@ public class CarritoItemRepositoryTestIntegracion {
 
     @Test
     public void update(){
-        Optional<CarritoItem>carritoItem=carritoItemRepository.findById(1);
+        Optional<CarritoItem>carritoItem=carritoItemRepository.findById(1L);
         assertTrue(carritoItem.isPresent(),"El item con el id 1, deberia constar en la base");
         carritoItem.orElse(null).setCantidad(2);
         carritoItem.orElse(null).setPrecioUnitario(BigDecimal.valueOf(12.80));
@@ -66,10 +66,10 @@ public class CarritoItemRepositoryTestIntegracion {
 
     @Test
     public void delete(){
-        if (carritoItemRepository.existsById(1)){
-            carritoItemRepository.deleteById(1);
+        if (carritoItemRepository.existsById(1L)){
+            carritoItemRepository.deleteById(1L);
         }
-        assertFalse(carritoItemRepository.existsById(1), "El id=1 debia haberse eliminado");
-    }
+        assertFalse(carritoItemRepository.existsById(1L), "El id=1 debia haberse eliminado");
     }
 }
+
