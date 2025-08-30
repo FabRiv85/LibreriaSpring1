@@ -5,5 +5,5 @@ export interface CarritoItem{
     libro: Libro;
     cantidad: number;
     precioUnitario: number;
-    total: number; 
+    total: number;   
 }

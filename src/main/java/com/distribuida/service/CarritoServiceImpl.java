@@ -58,7 +58,7 @@ public class CarritoServiceImpl implements CarritoService{
             var carrito= getOrCreateByClienteId(clienteId,null);
             var libro= libroRepository.findById(libroId)
                     .orElseThrow(() -> new IllegalArgumentException("Libro no encontrado "+ libroId));
-            var itemOpt= carritoItemRepository.findByCarritoandLibro(carrito, libro);
+            var itemOpt= carritoItemRepository.findByCarritoAndLibro(carrito, libro);
             if (itemOpt.isPresent()){
                 var item =itemOpt.get();
                 item.setCantidad(item.getCantidad() + cantidad);
@@ -154,7 +154,7 @@ public class CarritoServiceImpl implements CarritoService{
             var carrito= getOrCreateByToken(token);
             var libro= libroRepository.findById(libroId)
                     .orElseThrow(()-> new IllegalArgumentException("Libro no encontrado: "+ libroId));
-            var itemOpt = carritoItemRepository.findByCarritoandLibro(carrito, libro);
+            var itemOpt = carritoItemRepository.findByCarritoAndLibro(carrito, libro);
             if (itemOpt.isPresent()){
                 var item = itemOpt.get();
                 item.setCantidad(item.getCantidad()+ cantidad);

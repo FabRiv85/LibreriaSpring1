@@ -7,7 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { LibroService } from '../../services/libro';
 import { AutorService } from '../../services/autor';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule  } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Block } from '@angular/compiler';
@@ -48,7 +48,9 @@ constructor(
   private categoriaService: CategoriaService,
   private dialog: MatDialog,
   private http:HttpClient
-){}
+){
+
+}
 
 
   ngOnInit(): void {
@@ -124,13 +126,13 @@ constructor(
       this.libro={...libro};
       this.idEditar = this.libro.idLibro;
       this.editar=true;
-      setTimeout(()=>{
+      setTimeout(()  =>{
         this.formularioLibro.nativeElement.scrollIntoView({behavior: 'smooth',block:'start'})
       },100);
     }
 
     editarLibroCancelar(form: NgForm): void{
-      this.libro={ }as Libro;
+      this.libro={ } as Libro;
       this.idEditar=null;
       this.editar = false;
       form.resetForm();

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface CarritoItemRepository extends JpaRepository<CarritoItem, Long> {
 
-    Optional<CarritoItem> findByCarritoandLibro(Carrito carrito, Libro libro);
+    Optional<CarritoItem> findByCarritoAndLibro(Carrito carrito, Libro libro);
 
     List<CarritoItem> findByCarrito(Carrito carrito);
 }

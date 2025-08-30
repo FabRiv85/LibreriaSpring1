@@ -1,3 +1,34 @@
+<mat-toolbar color="primary" class="topbar">
+    <a mat-button class="brand" routerLink="/libros1">
+        <mat-icon class="brand-logo" fontSet="material-icons-outlined" fontIcon="menu_book">
+        </mat-icon>
+        <span class="brand-name">Libreria ABC S.A.</span>
+    </a>
+    <a mat-button routerLink="/categorias" routerLinkActive="active">
+        <mat-icon fontSet="material-icons-outlined">category</mat-icon> 
+        <span>Categorias</span>
+    </a>
+    <a mat-button routerLink="/autores" routerLinkActive="active">
+        <mat-icon fontSet="material-icons-outlined">person</mat-icon> 
+        <span>Autores</span>
+    </a>
+    <a mat-button routerLink="/clientes" routerLinkActive="active">
+        <mat-icon fontSet="material-icons-outlined">groups</mat-icon> 
+        <span>Clientes</span>
+    </a>
+    <a mat-button routerLink="/libros" routerLinkActive="active">
+        <mat-icon fontSet="material-icons-outlined">library_books</mat-icon> 
+        <span>Libros</span>
+    </a>
+
+    <span class="spacer"></span>
+
+    <a mat-stroked-button color="accent" routerLink="/carrito">
+        <mat-icon fontSet="material-icons-outlined">shopping-card</mat-icon>
+        <span>Carrito</span>
+    </a>
+</mat-toolbar>
+
 <div class="container mt-4" #formularioAutor>
     <h2>{{editar ? 'Editar Autor' : 'Agregar Autor'}}</h2>
     <form (ngSubmit)="guardarAutor(formAutor)" #formAutor="ngForm" novalidate>
@@ -16,11 +47,11 @@
             </div>
             <div class="col-md-4 mb-2">
                 <input type="text" class="form-control" placeholder="Direccion" [(ngModel)]="autor.dirAutor"
-                name="Direccion" required #direccion="ngModel" [ngClass]="{'is-invalid': direccion.invalid && direccion.touched}">
+                name="Direccion" required #direccion="ngModel" [class.is-invalid]="direccion.invalid && direccion.touched">
             </div>
             <div class="col-md-4 mb-2">
-                <input type="number" class="form-control" placeholder="Telefono" [(ngModel)]="autor.fonoAutor"
-                name="Telefono" required #telefono="ngModel" [ngClass]="{'is-invalid': telefono.invalid && telefono.touched}">
+                <input type="text" class="form-control" placeholder="Telefono" [(ngModel)]="autor.fonoAutor"
+                name="Telefono" required #telefono="ngModel" [class.is-invalid]="telefono.invalid && telefono.touched">
             </div>
             <div class="col-md-4 mb-2">
                 <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="autor.correoAutor" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"

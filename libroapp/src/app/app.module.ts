@@ -7,7 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule} from '@angular/material/paginator';
 import { MatPaginator} from '@angular/material/paginator';
 import { MatSortModule} from '@angular/material/sort';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -21,6 +21,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AutorComponent } from './components/autor/autor';
 import { CategoriaComponent } from './components/categoria/categoria';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardMdImage, MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+//import { Carrito } from './componentes/carrito/CarritoComponent';
+import { MatMenuModule } from '@angular/material/menu';
+import { CarritoComponent } from './components/carrito/carrito';
+import { LibrosListComponent } from './components/libros-list/libros-list';
 
 
 @NgModule({
@@ -29,7 +37,9 @@ import { CategoriaComponent } from './components/categoria/categoria';
     ClienteComponent,
     AutorComponent,
     CategoriaComponent,
-    LibroComponent
+    LibroComponent,
+    CarritoComponent,
+    LibrosListComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +58,13 @@ import { CategoriaComponent } from './components/categoria/categoria';
     MatOptionModule,
     MatDialogModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
+    MatMenuModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners()

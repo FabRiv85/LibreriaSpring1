@@ -13,7 +13,7 @@ public interface CarritoService {
 
     Carrito getOrCreateByToken(String token);
     Carrito addItem(String token, int libroId, int cantidad);
-    Carrito updateItemCantidad(String Token, long carritItemId, int nuevaCantidad);
+    Carrito updateItemCantidad(String token, long carritItemId, int nuevaCantidad);
     void removeItem(String token, long carritoItemId);
     void clearByToken(String token);
     Carrito getByToken(String token);

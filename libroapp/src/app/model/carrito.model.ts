@@ -9,5 +9,5 @@ export interface Carrito{
     descuento: number;
     impuesto: number;
     total: number;
-    actualizadoEn?: string;
+    actualizadoEn?: string; 
 }
