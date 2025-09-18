@@ -29,22 +29,26 @@
     </a>
 
 </mat-toolbar>
-
+<!-- <mat-toolbar color="primary">
+    <span>Libreria</span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/carrito"><mat-icon>shopping-card</mat-icon>Carrito</a>
+</mat-toolbar> -->
 
 <div class="grid" *ngIf="!loading; else loader">
     <mat-card class="book" *ngFor="let l of libros">
-        <img mat-card-image [src]="'http://localhost:8080/'+ (l.portLibro || 'portadas/noimage.png')" 
-        alt="{{l.tituLibro}}">
-    <mat-card-content>
-        <h3>{{l.tituLibro}}</h3>
-        <p class="autor">{{l.autor.nomAutor}} {{l.autor.apeAutor}}</p>
-        <p class="precio">{{l.precLibro | currency: 'USD'}}</p>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary"(click)="add(l)">
-            <mat-icon>add_shopping_cart</mat-icon>Agregar
-        </button>
-    </mat-card-actions>
+            <img mat-card-image [src]="'http://localhost:8080/'+ (l.portLibro || 'portadas/noimage.png')" 
+            alt="{{l.tituLibro}}">
+        <mat-card-content>
+            <h3>{{l.tituLibro}}</h3>
+            <p class="autor">{{l.autor?.nomAutor}} {{l.autor?.apeAutor}}</p>
+            <p class="precio">{{l.precLibro | currency: 'USD'}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary"(click)="add(l)">
+                <mat-icon>add_shopping_cart</mat-icon>Agregar
+            </button>
+        </mat-card-actions>
     </mat-card>
 </div>
 

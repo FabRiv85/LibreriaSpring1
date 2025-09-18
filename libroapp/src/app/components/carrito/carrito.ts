@@ -16,8 +16,7 @@ export class CarritoComponent implements OnInit{
 
   carrito?: Carrito;
   displayed = ['titulo','precio','cantidad','total','acciones'];
-  loading=false;
-
+  loading = false;
 
   constructor(private carritoService: GuestCarritoService,
       private checkoutService: GuestCheckoutService,

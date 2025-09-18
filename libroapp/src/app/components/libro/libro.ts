@@ -14,7 +14,7 @@ import { Block } from '@angular/compiler';
 import { NgForm } from '@angular/forms';
 import { CategoriaService } from '../../services/categoria';
 
-
+ 
 @Component({
   selector: 'app-libro',
   standalone: false,
@@ -70,7 +70,6 @@ constructor(
   cargarAutores(): void{
     this.autorService.findAll().subscribe(data=>{
       this.autores=data;
-
     });
   }
 

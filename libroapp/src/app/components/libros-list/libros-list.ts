@@ -28,14 +28,14 @@ constructor(private libroService:LibroService,
     this.carritoService.createOrGet().subscribe();
     this.libroService.findAll().subscribe({
       next: res =>{this.libros= res; this.loading=false},
-      error: _=>{this.loading= false}  
+      error: _ =>{this.loading= false}  
     });
 
   }
 
   add(libro: Libro){
       this.carritoService.addItem(libro.idLibro, 1).subscribe({
-        next: _ =>this.snack.open('Agregado al carrito', 'Ok',{duration: 1500}),
+        next: _ => this.snack.open('Agregado al carrito', 'Ok',{duration: 1500}),
         error: err => Swal.fire('Error',err?.error?.message || 'No se pudo agregar','error')   
       });
   }

@@ -7,7 +7,7 @@ export interface Carrito{
     items: CarritoItem[];
     subtotal: number;
     descuento: number;
-    impuesto: number;
+    impuestos: number;
     total: number;
     actualizadoEn?: string; 
 }
